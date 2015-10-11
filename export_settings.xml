@@ -10,6 +10,9 @@
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
 
 </language>
 <language name="S">
@@ -21,6 +24,9 @@
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
 
 </language>
 <language name="C++ Source File">
@@ -32,6 +38,9 @@
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
 
 </language>
 <language name="S">
@@ -43,20 +52,12 @@
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
 
 </language>
 <language name="Object File">
-
-</language>
-<language name="s">
-<includepath>${ProjDirPath}/inc</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
 
 </language>
 <language name="Assembly Source File">
@@ -68,6 +69,23 @@
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
+
+</language>
+<language name="s">
+<includepath>${ProjDirPath}/inc</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
 
 </language>
 </section>
@@ -147,10 +165,10 @@
 <language name="Object File">
 
 </language>
-<language name="s">
+<language name="Assembly Source File">
 
 </language>
-<language name="Assembly Source File">
+<language name="s">
 
 </language>
 </section>
