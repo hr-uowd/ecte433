@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="C Source File">
+<includepath>${ProjDirPath}/inc</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+
+</language>
+<language name="S">
+<includepath>${ProjDirPath}/inc</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+
+</language>
+<language name="C++ Source File">
+<includepath>${ProjDirPath}/inc</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+
+</language>
+<language name="S">
+<includepath>${ProjDirPath}/inc</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+
+</language>
+<language name="Object File">
+
+</language>
+<language name="s">
+<includepath>${ProjDirPath}/inc</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+
+</language>
+<language name="Assembly Source File">
+<includepath>${ProjDirPath}/inc</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="C Source File">
+<macro>
+<name>STM32F746G_DISCO</name><value/>
+</macro>
+<macro>
+<name>STM32F746NGHx</name><value/>
+</macro>
+<macro>
+<name>STM32F7</name><value/>
+</macro>
+<macro>
+<name>STM32</name><value/>
+</macro>
+<macro>
+<name>DEBUG</name><value/>
+</macro>
+
+</language>
+<language name="S">
+<macro>
+<name>STM32F746G_DISCO</name><value/>
+</macro>
+<macro>
+<name>STM32F746NGHx</name><value/>
+</macro>
+<macro>
+<name>STM32F7</name><value/>
+</macro>
+<macro>
+<name>STM32</name><value/>
+</macro>
+<macro>
+<name>DEBUG</name><value/>
+</macro>
+
+</language>
+<language name="C++ Source File">
+<macro>
+<name>STM32F746G_DISCO</name><value/>
+</macro>
+<macro>
+<name>STM32F746NGHx</name><value/>
+</macro>
+<macro>
+<name>STM32F7</name><value/>
+</macro>
+<macro>
+<name>STM32</name><value/>
+</macro>
+<macro>
+<name>DEBUG</name><value/>
+</macro>
+
+</language>
+<language name="S">
+<macro>
+<name>STM32F746G_DISCO</name><value/>
+</macro>
+<macro>
+<name>STM32F746NGHx</name><value/>
+</macro>
+<macro>
+<name>STM32F7</name><value/>
+</macro>
+<macro>
+<name>STM32</name><value/>
+</macro>
+<macro>
+<name>DEBUG</name><value/>
+</macro>
+
+</language>
+<language name="Object File">
+
+</language>
+<language name="s">
+
+</language>
+<language name="Assembly Source File">
+
+</language>
+</section>
+</cdtprojectproperties>
