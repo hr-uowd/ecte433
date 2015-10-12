@@ -1,6 +1,0 @@
-src/BSP_DISCO_F746NG/ft5336.o: ../src/BSP_DISCO_F746NG/ft5336.c \
- ../src/BSP_DISCO_F746NG/ft5336.h ../src/BSP_DISCO_F746NG/ts.h
-
-../src/BSP_DISCO_F746NG/ft5336.h:
-
-../src/BSP_DISCO_F746NG/ts.h:
