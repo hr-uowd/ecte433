@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    system_stm32f7xx.c
   * @author  MCD Application Team
-  * @version V1.0.1
+  * @version V1.0.0
   * @date    25-June-2015
   * @brief   CMSIS Cortex-M7 Device Peripheral Access Layer System Source File.
   *
@@ -20,22 +20,7 @@
   *                                 be called whenever the core clock is changed
   *                                 during program execution.
   *
-  * This file configures the system clock as follows:
-  *-----------------------------------------------------------------------------
-  * System clock source       | [1] PLL_HSE_XTAL      | [2] PLL_HSI if [1] fails
-  *                           | (external 25MHz xtal) | (internal 16MHz clock)
-  *-----------------------------------------------------------------------------
-  * SYSCLK(MHz)               | 216                   | 216
-  *-----------------------------------------------------------------------------
-  * AHBCLK (MHz)              | 216                   | 216
-  *-----------------------------------------------------------------------------
-  * APB1CLK (MHz)             |  54                   |  54
-  *-----------------------------------------------------------------------------
-  * APB2CLK (MHz)             | 108                   | 108
-  *-----------------------------------------------------------------------------
-  * USB capable               | YES                   |  NO
-  * with 48 MHz precise clock |                       |
-  *-----------------------------------------------------------------------------  
+  *
   ******************************************************************************
   * @attention
   *
@@ -79,9 +64,6 @@
   */
 
 #include "stm32f7xx.h"
-#include "hal_tick.h"
-
-HAL_StatusTypeDef HAL_Init(void);
 
 #if !defined  (HSE_VALUE) 
   #define HSE_VALUE    ((uint32_t)25000000) /*!< Default value of the External oscillator in Hz */
@@ -109,7 +91,7 @@ HAL_StatusTypeDef HAL_Init(void);
 
 /************************* Miscellaneous Configuration ************************/
 /*!< Uncomment the following line if you need to use external SRAM or SDRAM mounted
-     on EVAL board as data memory  */
+     on DISCOVERY board as data memory  */
 /* #define DATA_IN_ExtSRAM */ 
 /* #define DATA_IN_ExtSDRAM */
 
@@ -132,10 +114,6 @@ HAL_StatusTypeDef HAL_Init(void);
   * @{
   */
 
-/* Select the clock sources (other than HSI) to start with (0=OFF, 1=ON) */
-#define USE_PLL_HSE_EXTC (0) /* Use external clock --> NOT USED ON THIS BOARD */ 
-#define USE_PLL_HSE_XTAL (1) /* Use external xtal */
-
 /**
   * @}
   */
@@ -152,8 +130,8 @@ HAL_StatusTypeDef HAL_Init(void);
                is no need to call the 2 first functions listed above, since SystemCoreClock
                variable is updated automatically.
   */
-uint32_t SystemCoreClock = HSI_VALUE;
-const uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+  uint32_t SystemCoreClock = 16000000;
+  __IO const uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
 
 /**
   * @}
@@ -165,12 +143,6 @@ const uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 
 #if defined (DATA_IN_ExtSRAM) || defined (DATA_IN_ExtSDRAM)
   static void SystemInit_ExtMemCtl(void); 
 #endif /* DATA_IN_ExtSRAM || DATA_IN_ExtSDRAM */
-
-#if (USE_PLL_HSE_XTAL != 0) || (USE_PLL_HSE_EXTC != 0)
-uint8_t SetSysClock_PLL_HSE(uint8_t bypass);
-#endif
-
-uint8_t SetSysClock_PLL_HSI(void);
 
 /**
   * @}
@@ -213,7 +185,7 @@ void SystemInit(void)
   RCC->CIR = 0x00000000;
 
 #if defined (DATA_IN_ExtSRAM) || defined (DATA_IN_ExtSDRAM)
-  SystemInit_ExtMemCtl(); 
+  SystemInit_ExtMemCtl();
 #endif /* DATA_IN_ExtSRAM || DATA_IN_ExtSDRAM */
 
   /* Configure the Vector Table location add offset address ------------------*/
@@ -222,22 +194,6 @@ void SystemInit(void)
 #else
   SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
 #endif
-
-  /* Configure the Cube driver */
-  SystemCoreClock = HSI_VALUE; // At this stage the HSI is used as system clock
-  HAL_Init();
-
-  // Enable CPU L1-Cache
-  SCB_EnableICache();
-  SCB_EnableDCache();
-
-  /* Configure the System clock source, PLL Multiplier and Divider factors,
-     AHB/APBx prescalers and Flash settings */
-  SetSysClock();
-  
-  /* Reset the timer to avoid issues after the RAM initialization */
-  TIM_MST_RESET_ON;
-  TIM_MST_RESET_OFF;  
 }
 
 /**
@@ -335,7 +291,6 @@ void SystemCoreClockUpdate(void)
   */
 void SystemInit_ExtMemCtl(void)
 {
-  __IO uint32_t tmp = 0;
 #if defined (DATA_IN_ExtSDRAM)
   register uint32_t tmpreg = 0, timeout = 0xFFFF;
   register uint32_t index;
@@ -343,9 +298,6 @@ void SystemInit_ExtMemCtl(void)
   /* Enable GPIOD, GPIOE, GPIOF, GPIOG, GPIOH and GPIOI interface 
       clock */
   RCC->AHB1ENR |= 0x000001F8;
-  
-  /* Delay after an RCC peripheral clock enabling */
-  tmp = READ_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOEEN);
   
   /* Connect PDx pins to FMC Alternate function */
   GPIOD->AFR[0]  = 0x000000CC;
@@ -423,9 +375,6 @@ void SystemInit_ExtMemCtl(void)
   /* Enable the FMC interface clock */
   RCC->AHB3ENR |= 0x00000001;
   
-  /* Delay after an RCC peripheral clock enabling */
-  tmp = READ_BIT(RCC->AHB3ENR, RCC_AHB3ENR_FMCEN);
-
   /* Configure and enable SDRAM bank1 */
   FMC_Bank5_6->SDCR[0] = 0x000019E5;
   FMC_Bank5_6->SDTR[0] = 0x01116361;      
@@ -480,9 +429,6 @@ void SystemInit_ExtMemCtl(void)
    /* Enable GPIOD, GPIOE, GPIOF and GPIOG interface clock */
   RCC->AHB1ENR   |= 0x00000078;
   
-    /* Delay after an RCC peripheral clock enabling */
-  tmp = READ_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOEEN);
-  
   /* Connect PDx pins to FMC Alternate function */
   GPIOD->AFR[0]  = 0x00CCC0CC;
   GPIOD->AFR[1]  = 0xCCCCCCCC;
@@ -534,9 +480,6 @@ void SystemInit_ExtMemCtl(void)
 /*-- FMC/FSMC Configuration --------------------------------------------------*/                                                                               
   /* Enable the FMC/FSMC interface clock */
   RCC->AHB3ENR         |= 0x00000001;
-  
-  /* Delay after an RCC peripheral clock enabling */
-  tmp = READ_BIT(RCC->AHB3ENR, RCC_AHB3ENR_FMCEN);
 
   /* Configure and enable Bank1_SRAM2 */
   FMC_Bank1->BTCR[4]  = 0x00001091;
@@ -544,156 +487,8 @@ void SystemInit_ExtMemCtl(void)
   FMC_Bank1E->BWTR[4] = 0x0FFFFFFF;  
 
 #endif /* DATA_IN_ExtSRAM */
-
-  (void)(tmp);
 }
 #endif /* DATA_IN_ExtSRAM || DATA_IN_ExtSDRAM */
-
-/**
-  * @brief  Configures the System clock source, PLL Multiplier and Divider factors,
-  *               AHB/APBx prescalers and Flash settings
-  * @note   This function should be called only once the RCC clock configuration  
-  *         is reset to the default reset state (done in SystemInit() function).             
-  * @param  None
-  * @retval None
-  */
-void SetSysClock(void)
-{
-  /* 1- Try to start with HSE and external clock */
-#if USE_PLL_HSE_EXTC != 0
-  if (SetSysClock_PLL_HSE(1) == 0)
-#endif
-  {
-    /* 2- If fail try to start with HSE and external xtal */
-    #if USE_PLL_HSE_XTAL != 0
-    if (SetSysClock_PLL_HSE(0) == 0)
-    #endif
-    {
-      /* 3- If fail start with HSI clock */
-      if (SetSysClock_PLL_HSI() == 0)
-      {
-        while(1)
-        {
-          // [TODO] Put something here to tell the user that a problem occured...
-        }
-      }
-    }
-  }
-  
-  // Output clock on MCO2 pin(PC9) for debugging purpose
-  // Can be visualized on uSD card CN3 connector pin 8
-  //HAL_RCC_MCOConfig(RCC_MCO2, RCC_MCO2SOURCE_SYSCLK, RCC_MCODIV_4); // 216 MHz / 4 = 54 MHz
-}
-
-#if (USE_PLL_HSE_XTAL != 0) || (USE_PLL_HSE_EXTC != 0)
-/******************************************************************************/
-/*            PLL (clocked by HSE) used as System clock source                */
-/******************************************************************************/
-uint8_t SetSysClock_PLL_HSE(uint8_t bypass)
-{
-  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-  RCC_OscInitTypeDef RCC_OscInitStruct;
-
-  // Enable power clock  
-  __PWR_CLK_ENABLE();
-  
-  // Enable HSE oscillator and activate PLL with HSE as source
-  RCC_OscInitStruct.OscillatorType      = RCC_OSCILLATORTYPE_HSE;
-  if (bypass == 0)
-  {
-    RCC_OscInitStruct.HSEState          = RCC_HSE_ON; /* External xtal on OSC_IN/OSC_OUT */
-  }
-  else
-  {
-    RCC_OscInitStruct.HSEState          = RCC_HSE_BYPASS; /* External clock on OSC_IN */
-  }
-  // Warning: this configuration is for a 25 MHz xtal clock only
-  RCC_OscInitStruct.PLL.PLLState        = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource       = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM            = 25;            // VCO input clock = 1 MHz (25 MHz / 25)
-  RCC_OscInitStruct.PLL.PLLN            = 432;           // VCO output clock = 432 MHz (1 MHz * 432)
-  RCC_OscInitStruct.PLL.PLLP            = RCC_PLLP_DIV2; // PLLCLK = 216 MHz (432 MHz / 2)
-  RCC_OscInitStruct.PLL.PLLQ            = 9;             // USB clock = 48 MHz (432 MHz / 9) --> OK for USB
-  
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    return 0; // FAIL
-  }
-
-  // Activate the OverDrive to reach the 216 MHz Frequency
-  if (HAL_PWREx_EnableOverDrive() != HAL_OK)
-  {
-    return 0; // FAIL
-  }
-  
-  // Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 clocks dividers
-  RCC_ClkInitStruct.ClockType      = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
-  RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_PLLCLK; // 216 MHz
-  RCC_ClkInitStruct.AHBCLKDivider  = RCC_SYSCLK_DIV1;         // 216 MHz
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;           //  54 MHz
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;           // 108 MHz
-  
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
-  {
-    return 0; // FAIL
-  }
-
-  return 1; // OK
-}
-#endif
-
-/******************************************************************************/
-/*            PLL (clocked by HSI) used as System clock source                */
-/******************************************************************************/
-uint8_t SetSysClock_PLL_HSI(void)
-{
-  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-  RCC_OscInitTypeDef RCC_OscInitStruct;
-
-  // Enable CPU L1-Cache
-  SCB_EnableICache();
-  SCB_EnableDCache();
-
-  // Enable power clock  
-  __PWR_CLK_ENABLE();
- 
-  // Enable HSI oscillator and activate PLL with HSI as source
-  RCC_OscInitStruct.OscillatorType      = RCC_OSCILLATORTYPE_HSI | RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSIState            = RCC_HSI_ON;
-  RCC_OscInitStruct.HSEState            = RCC_HSE_OFF;
-  RCC_OscInitStruct.HSICalibrationValue = 16;
-  RCC_OscInitStruct.PLL.PLLState        = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource       = RCC_PLLSOURCE_HSI;   
-  RCC_OscInitStruct.PLL.PLLM            = 16;            // VCO input clock = 1 MHz (16 MHz / 16)
-  RCC_OscInitStruct.PLL.PLLN            = 432;           // VCO output clock = 432 MHz (1 MHz * 432)
-  RCC_OscInitStruct.PLL.PLLP            = RCC_PLLP_DIV2; // PLLCLK = 216 MHz (432 MHz / 2)
-  RCC_OscInitStruct.PLL.PLLQ            = 9;             // USB clock = 48 MHz (432 MHz / 9) --> OK for USB
-  
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    return 0; // FAIL
-  }
- 
-  // Activate the OverDrive to reach the 216 MHz Frequency
-  if (HAL_PWREx_EnableOverDrive() != HAL_OK)
-  {
-    return 0; // FAIL
-  }
-  
-  // Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 clocks dividers
-  RCC_ClkInitStruct.ClockType      = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
-  RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_PLLCLK; // 216 MHz
-  RCC_ClkInitStruct.AHBCLKDivider  = RCC_SYSCLK_DIV1;         // 216 MHz
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;           //  54 MHz
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;           // 108 MHz
-
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
-  {
-    return 0; // FAIL
-  }
-
-  return 1; // OK
-}
 
 /**
   * @}

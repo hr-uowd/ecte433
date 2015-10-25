@@ -485,6 +485,11 @@ void HAL_DisableFMCMemorySwapping(void)
   SYSCFG->MEMRMP &= (uint32_t)~((uint32_t)SYSCFG_MEMRMP_SWP_FMC);
 }
 
+
+
+
+
+
 /**
   * @}
   */

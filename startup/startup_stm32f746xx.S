@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file      startup_stm32f746xx.s
   * @author    MCD Application Team
-  * Version    V1.0.0
-  * Date       28-April-2015
+  * @Version    V1.0.1
+  * @Date       25-June-2015
   * @brief     STM32F746xx Devices vector table for GCC based toolchain. 
   *            This module performs:
   *                - Set the initial SP
@@ -110,14 +110,9 @@ LoopFillZerobss:
 /* Call the clock system initialization function.*/
   bl  SystemInit   
 /* Call static constructors */
-  //bl __libc_init_array
+    bl __libc_init_array
 /* Call the application's entry point.*/
-  //bl  main
-  // Calling the crt0 'cold-start' entry point. There __libc_init_array is called
-  // and when existing hardware_init_hook() and software_init_hook() before 
-  // starting main(). software_init_hook() is available and has to be called due 
-  // to initializsation when using rtos.
-  bl _start
+  bl  main
   bx  lr    
 .size  Reset_Handler, .-Reset_Handler
 

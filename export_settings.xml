@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cdtprojectproperties>
 <section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
-<language name="S">
-<includepath>${ProjDirPath}/inc</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
-<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
-
-</language>
 <language name="C Source File">
 <includepath>${ProjDirPath}/inc</includepath>
 <includepath>${ProjDirPath}/src/mbed-src/api</includepath>
@@ -27,6 +13,22 @@
 <includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/AUDIO_DISCO_F746NG</includepath>
+
+</language>
+<language name="S">
+<includepath>${ProjDirPath}/inc</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/AUDIO_DISCO_F746NG</includepath>
 
 </language>
 <language name="C++ Source File">
@@ -41,6 +43,7 @@
 <includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/AUDIO_DISCO_F746NG</includepath>
 
 </language>
 <language name="S">
@@ -55,23 +58,10 @@
 <includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/AUDIO_DISCO_F746NG</includepath>
 
 </language>
 <language name="Object File">
-
-</language>
-<language name="Assembly Source File">
-<includepath>${ProjDirPath}/inc</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
-<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
-<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
-<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
 
 </language>
 <language name="s">
@@ -86,11 +76,27 @@
 <includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
 <includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/AUDIO_DISCO_F746NG</includepath>
+
+</language>
+<language name="Assembly Source File">
+<includepath>${ProjDirPath}/inc</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/api</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/hal</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7</includepath>
+<includepath>${ProjDirPath}/src/mbed-src/targets/cmsis</includepath>
+<includepath>${ProjDirPath}/src/BSP_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/LCD_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/TS_DISCO_F746NG</includepath>
+<includepath>${ProjDirPath}/src/AUDIO_DISCO_F746NG</includepath>
 
 </language>
 </section>
 <section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
-<language name="S">
+<language name="C Source File">
 <macro>
 <name>STM32F746G_DISCO</name><value/>
 </macro>
@@ -108,7 +114,7 @@
 </macro>
 
 </language>
-<language name="C Source File">
+<language name="S">
 <macro>
 <name>STM32F746G_DISCO</name><value/>
 </macro>
@@ -165,10 +171,10 @@
 <language name="Object File">
 
 </language>
-<language name="Assembly Source File">
+<language name="s">
 
 </language>
-<language name="s">
+<language name="Assembly Source File">
 
 </language>
 </section>
